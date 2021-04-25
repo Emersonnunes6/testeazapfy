@@ -12,10 +12,10 @@ import { irParaDetalhes } from '../../routes/coordinator/coordinator'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 400,
   },
   media: {
-    height: 140,
+    height: 200,
   },
 });
 
@@ -27,13 +27,15 @@ export default function CardPais(props) {
   return (
     <Card 
       style={{
-        margin: '50px'
+        width: '300px',
+        margin: '30px'
       }}
     className={classes.root}>
       <CardActionArea>
         <CardMedia
           style={{
-            height: "200px"
+            height: "200px",
+            width: "300px"
           }}
           key={props.nomePais}
           className={classes.media}
@@ -42,17 +44,17 @@ export default function CardPais(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {props.nomePaisTraducao}<br/>
-            <i style={{fontSize: '16px', margin: '0'}}>{props.nomePais}</i>
+            {props.nomePais}<br/>
+            <i style={{fontSize: '16px', margin: '0'}}>{props.nomeNativo}</i>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Continente: {props.regiaoPais}
+            Continent: {props.regiaoPais}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             Capital: {props.capitalPais}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            População: {props.populacaoPais}
+            Population: {(props.populacaoPais).toLocaleString('pt-br')}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -60,7 +62,7 @@ export default function CardPais(props) {
         <Button 
           onClick={() => irParaDetalhes(history, props.nomePais)}
           size="small" color="primary">
-          Detalhes
+          Details
         </Button>
       </CardActions>
     </Card>

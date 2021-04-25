@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react"
 import GlobalStateContext from "../../globalState/globalStateContext"
-import { DivCards, DivFixada, DivPrincipal, HeaderInicio } from "./styles"
+import { DivCards, DivFixada, DivPrincipal, DivSelectH3, HeaderInicio } from "./styles"
 import CardPais from '../../components/cardPais/cardPais'
 import useValorSelect from "../../customHooks/useSelect"
 import useValorInput from "../../customHooks/useInput"
@@ -28,21 +28,21 @@ const PaginaInicial = () => {
         <DivPrincipal>
             <HeaderInicio key="header">
                 <DivFixada>
-                    <div>
-                    <h3>Busca por continente:</h3>
+                    <DivSelectH3>
+                    <h3>Search by continent: </h3>
                         <select value={valorSelect} onChange={onChangeSelect}>
-                            <option value="" selected>Escolha o continente</option>
+                            <option value="" selected>Choose the continent</option>
                             <option value="asia">Asia</option>
                             <option value="americas">América</option>
                             <option value="africa">África</option>
                             <option value="europe">Europa</option>
                             <option value="oceania">Oceania</option>
                         </select>
-                    </div>
-                    <div>
-                        <h3>Busca por nome:</h3>
-                        <input value={valorInput} onChange={onChangeInput} placeholder="Digite o nome do país:"></input>
-                    </div>
+                    </DivSelectH3>
+                    <DivSelectH3>
+                        <h3>Search by name: </h3>
+                        <input value={valorInput} onChange={onChangeInput} placeholder="Enter the name of the country:"></input>
+                    </DivSelectH3>
                 </DivFixada>
             </HeaderInicio>
             <DivCards>
@@ -51,7 +51,7 @@ const PaginaInicial = () => {
                     <CardPais
                         key={pais.name}
                         nomePais={pais.name}
-                        nomePaisTraducao={pais.translations.br}
+                        nomeNativo={pais.nativeName}
                         bandeiraPais={pais.flag}
                         regiaoPais={pais.region}
                         capitalPais={pais.capital}
